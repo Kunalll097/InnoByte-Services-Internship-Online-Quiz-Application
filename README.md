@@ -2,9 +2,8 @@
 
 This project is a full-stack Quiz Application developed during an internship at InnoByte Services. It is divided into two parts:  
 - **Frontend**: Located in the `Quiz-App-frontend` branch, built with React, Vite, and Tailwind CSS.  
-- **Backend**: Located in the `Quiz-App-backend` branch, built with Spring Boot.
 
----
+- **Backend**: Located in the `Quiz-App-backend` branch, built with Spring Boot.
 
 ## Backend  
 
