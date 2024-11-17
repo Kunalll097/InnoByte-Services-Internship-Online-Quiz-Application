@@ -4,59 +4,94 @@ This project is a full-stack Quiz Application developed during an internship at 
 - **Frontend**: Located in the `Quiz-App-frontend` branch, built with React, Vite, and Tailwind CSS.  
 - **Backend**: Located in the `Quiz-App-backend` branch, built with Spring Boot.  
 
-## Frontend  
+## Backend  
 
-The frontend is built with **React**, **Vite**, and **Tailwind CSS**, providing a modern and responsive user interface for managing and participating in quizzes.  
+The backend is built with **Spring Boot**, providing RESTful APIs for managing quizzes and questions.  
 
 ### Features  
 
-- View questions  
-- Add new questions  
-- Delete questions  
-- Update questions  
+- Fetch all questions  
+- Add a new question  
+- Delete a question  
+- Update a question  
 - Create quizzes  
-- Submit quizzes and view results  
+- Fetch quizzes by ID  
+- Submit quizzes and get results  
 
 ### Technologies Used  
 
-- **React + Vite**  
-- **React Router**  
-- **Axios**  
-- **Tailwind CSS**  
+- **Spring Boot**  
+- **JPA/Hibernate**  
+- **MySQL**  
+- **Lombok**  
+- **Maven**  
 
-### API Integration  
+### Running the Backend  
 
-The frontend communicates with the backend via RESTful APIs. API methods are configured in `src/api/api.js`.  
-
-#### Example API Methods  
-
-- `fetchAllQuestions()`  
-- `addQuestion(question)`  
-- `deleteQuestion(id)`  
-- `updateQuestion(id, question)`  
-- `createQuiz(category, numQ, title)`  
-- `getQuizById(id)`  
-- `submitQuiz(id, responses)`  
-- `getQuizzes()`  
-
-### Running the Frontend  
-
-1. Navigate to the `Quiz-App-frontend` branch:  
+1. Navigate to the `Quiz-App-backend` branch:  
    ```bash  
-   git checkout Quiz-App-frontend  
+   git checkout Quiz-App-backend  
    ```  
 
-2. Install dependencies:  
-   ```bash  
-   npm install  
+2. Configure the database by editing `application.properties`:  
+
+   ```properties  
+   spring.application.name=quizapp  
+   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver  
+   spring.datasource.url=jdbc:mysql://127.0.0.1:3306/quizapp  
+   spring.datasource.username=root  
+   spring.datasource.password=Kunal123  
+   spring.jpa.hibernate.ddl-auto=update  
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect  
    ```  
 
-3. Start the development server:  
+3. Build the backend:  
    ```bash  
-   npm run dev  
+   mvn clean install  
    ```  
 
-The frontend will start on `http://localhost:5173`.  
+4. Start the backend server:  
+   ```bash  
+   mvn spring-boot:run  
+   ```  
+
+The backend server will start on `http://localhost:8080`.  
+
+### API Endpoints  
+
+#### Question Endpoints  
+
+- **Get all questions**: `GET /question/allQuestions`  
+- **Add a new question**: `POST /question/add`  
+  **Request Body**:  
+  ```json  
+  {  
+    "questionTitle": "What is Java?",  
+    "option1": "Programming Language",  
+    "option2": "Operating System",  
+    "option3": "Web Browser",  
+    "option4": "Database",  
+    "rightAnswer": "Programming Language",  
+    "difficultyLevel": "Easy",  
+    "category": "Programming"  
+  }  
+  ```  
+
+---
+
+## Branch Structure  
+
+- **`Quiz-App-frontend`**: Contains all files related to the frontend of the application.  
+- **`Quiz-App-backend`**: Contains all files related to the backend of the application.  
+
+---
+
+## Prerequisites  
+
+Make sure you have the following installed:  
+- **Java 21.0.2**  
+- **MySQL**  
+- **Node.js and npm**  
 
 ---
 
